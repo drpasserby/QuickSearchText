@@ -16,6 +16,11 @@
     
     <!-- 显示结果 -->
     <div class="result-box" v-html="highlightedText"></div>
+
+    <!-- 使用说明 -->
+    <div class="instructions">
+      <p>在上方主输入框输入要搜索的文本，在下方关键词框中添加多个词条并为其选择颜色。系统会自动高亮匹配的关键词。</p>
+    </div>
   </div>
 </template>
 
