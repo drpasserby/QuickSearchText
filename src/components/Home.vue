@@ -10,8 +10,9 @@
       <div class="tag-input"  v-for="(tag, index) in tags" :key="index">
         <div class="color-box" :style="{ backgroundColor: tag.color }" @click="removeTag(index)"></div>
         <input v-model="tag.value" placeholder="关键词"/>
+        <button class="remove-tag" @click="removeTag(index)">×</button>
       </div>
-      <button class="add-btn" @click="addTag">添加</button>
+      <button class="add-btn" @click="addTag">＋ 添加</button>
     </div>
     
     <!-- 显示结果 -->
@@ -65,16 +66,22 @@ const highlightedText = computed(() => {
     const tag = tags.value.find(
       t => t.value && t.value.toLowerCase() === match.toLowerCase()
     )
-    const color = tag ? tag.color : 'yellow'
-    return `<span style="color:${color}">${match}</span>`
+    const color = tag ? tag.color : '#ff0'
+    // use background color with contrasting text
+    return `<span style="background-color:${color};color:#fff;padding:0 2px;border-radius:2px;">${match}</span>`
   })
 })
 </script>
 
 <style scoped>
 .container {
-  padding: 20px;
-  font-family: sans-serif;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
 }
 
 .main-input-wrapper {
@@ -83,51 +90,102 @@ const highlightedText = computed(() => {
 }
 
 .main-input {
-  width: 60%;
-  padding: 8px 12px;
+  width: 100%;
+  max-width: 600px;
+  padding: 10px 14px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.main-input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 4px rgba(52,152,219,.3);
+  outline: none;
 }
 
 .tags-wrapper {
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
 .tag-input {
-  display: inline-block;
-  margin: 0 10px 10px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 6px 8px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
   position: relative;
 }
 
 .color-box {
   width: 20px;
   height: 20px;
-  margin: 0 auto 4px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
 .tag-input input {
   width: 100px;
-  padding: 4px;
+  padding: 4px 6px;
   font-size: 14px;
-  box-sizing: border-box;
+  margin-left: 6px;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.remove-tag {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0 4px;
+  margin-left: 4px;
+  cursor: pointer;
+  color: #999;
+}
+.remove-tag:hover {
+  color: #e74c3c;
 }
 
 .add-btn {
-  padding: 4px 8px;
+  padding: 6px 12px;
   font-size: 14px;
   cursor: pointer;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.add-btn:hover {
+  background: #2980b9;
 }
 
 .result-box {
-  min-height: 100px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  min-height: 120px;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
   white-space: pre-wrap;
+  background: #fafafa;
+  line-height: 1.5;
+}
+
+.instructions {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+  background: #f5f5f5;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid #eee;
 }
 </style>
