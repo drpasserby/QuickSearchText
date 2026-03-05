@@ -2,7 +2,7 @@
   <div class="container">
     <!-- 主输入框 -->
     <div class="main-input-wrapper">
-      <input class="main-input"  v-model="mainText" placeholder="请输入主文本"/>
+      <textarea class="main-input"  v-model="mainText" placeholder="请输入主文本"/>
     </div>
 
     <!-- 小输入框列表 -->
@@ -92,11 +92,15 @@ const highlightedText = computed(() => {
 .main-input {
   width: 100%;
   max-width: 600px;
+  min-height: 4em;
+  height: auto; 
   padding: 10px 14px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
   transition: border-color 0.2s, box-shadow 0.2s;
+  resize: vertical; 
+  font-family: inherit;
 }
 .main-input:focus {
   border-color: #3498db;
@@ -164,6 +168,10 @@ const highlightedText = computed(() => {
   border: none;
   border-radius: 4px;
   transition: background 0.2s;
+  flex-basis: 100%;
+  display: block;
+  width: fit-content;
+  margin: 6px auto 0;
 }
 .add-btn:hover {
   background: #2980b9;
