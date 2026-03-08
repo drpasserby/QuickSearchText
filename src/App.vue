@@ -1,9 +1,13 @@
 <template>
-  <HelloWorld/>
+  <Header/>
+  <Home/>
+  <Footer/>
 </template>
 
 <script setup>
-import HelloWorld from './components/Home.vue'
+import Home from './components/Home.vue'
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
 </script>
 
 <style scoped>
