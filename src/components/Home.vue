@@ -30,7 +30,6 @@ import { ref, computed } from 'vue'
 
 const mainText = ref('')
 
-// 初始几个小输入框，预置不同颜色
 const tags = ref([
   { value: '', color: '#e74c3c' },
   { value: '', color: '#27ae60' },
@@ -46,7 +45,6 @@ function removeTag(idx) {
 }
 
 function getRandomColor() {
-  // 生成随机颜色
   return '#' + Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0')
 }
 
@@ -67,13 +65,12 @@ const highlightedText = computed(() => {
       t => t.value && t.value.toLowerCase() === match.toLowerCase()
     )
     const color = tag ? tag.color : '#ff0'
-    // use background color with contrasting text
     return `<span style="background-color:${color};color:#fff;padding:0 2px;border-radius:2px;">${match}</span>`
   })
 })
 </script>
 
-<style scoped>
+<style>
 .container {
   max-width: 800px;
   margin: 40px auto;
