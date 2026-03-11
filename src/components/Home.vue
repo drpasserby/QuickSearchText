@@ -2,7 +2,8 @@
   <div class="container">
     <!-- 主输入框 -->
     <div class="main-input-wrapper">
-      <textarea class="main-input"  v-model="mainText" placeholder="请输入主文本"/>
+      <textarea class="main-input"  v-model="mainText" placeholder="请输入主文本">
+      </textarea>
     </div>
 
     <!-- 小输入框列表 -->
@@ -84,10 +85,11 @@ const highlightedText = computed(() => {
 .main-input-wrapper {
   text-align: center;
   margin-bottom: 20px;
+  padding: 0 .5em;
 }
 
 .main-input {
-  width: 100%;
+  width: 90%;
   max-width: 600px;
   min-height: 4em;
   height: auto; 
