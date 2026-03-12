@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="cr_text">Copyright © {{thisYear}} 心尘的工具集</div>
+    <div class="cr_text">Copyright © {{thisYear}} 心尘的快速搜索文本</div>
     <div class="cr_text">Powered by <a href="https://wulvxinchen.cn/">吾律心尘</a></div>
   </div>
 </template>
