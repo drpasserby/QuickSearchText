@@ -8,12 +8,16 @@
 
     <!-- 小输入框列表 -->
     <div class="tags-wrapper">
-      <div class="tag-input"  v-for="(tag, index) in tags" :key="index">
+      <button class="user-btn toggle-btn" @click="showTags = !showTags">
+          {{ showTags ? '隐藏关键词' : '显示关键词' }}
+      </button>
+      <div class="tag-input" v-show="showTags" v-for="(tag, index) in tags" :key="index">
         <div class="color-box" :style="{ backgroundColor: tag.color }" @click="removeTag(index)"></div>
         <input v-model="tag.value" placeholder="关键词"/>
         <button class="remove-tag" @click="removeTag(index)">×</button>
       </div>
-      <button class="add-btn" @click="addTag">＋ 添加</button>
+
+      <button class="user-btn add-btn" v-show="showTags" @click="addTag">＋ 添加</button>
     </div>
     
     <!-- 显示结果 -->
@@ -30,6 +34,7 @@
 import { ref, computed } from 'vue'
 
 const mainText = ref('')
+const showTags = ref(true)
 
 const tags = ref([
   { value: '', color: '#e74c3c' },
@@ -163,11 +168,10 @@ const highlightedText = computed(() => {
   color: #e74c3c;
 }
 
-.add-btn {
+.user-btn {
   padding: 6px 12px;
   font-size: 14px;
   cursor: pointer;
-  background: #3498db;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -177,6 +181,7 @@ const highlightedText = computed(() => {
   width: fit-content;
   margin: 6px auto 0;
 }
+
 .add-btn:hover {
   background: #2980b9;
 }
