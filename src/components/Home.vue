@@ -182,6 +182,18 @@ const highlightedText = computed(() => {
   margin: 6px auto 0;
 }
 
+.toggle-btn {
+  background: #ecf0f1;
+  color: #333;
+}
+
+.toggle-btn:hover{
+  background: #b7b9b9;
+}
+
+.add-btn{
+  background: #3498db;
+}
 .add-btn:hover {
   background: #2980b9;
 }
