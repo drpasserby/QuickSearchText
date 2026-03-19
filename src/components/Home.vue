@@ -19,7 +19,17 @@
 
       <button class="user-btn add-btn" v-show="showTags" @click="addTag">＋ 添加</button>
     </div>
-    
+
+    <!-- 关键词统计 -->
+    <div class="instructions">
+      <h3>关键词统计</h3>
+      <ul>
+        <li v-for="(count, keyword) in keywordCounts" :key="keyword">
+          {{ keyword }}: {{ count }}
+        </li>
+      </ul>
+    </div>
+    <br>
     <!-- 显示结果 -->
     <div class="result-box" v-html="highlightedText"></div>
 
@@ -207,7 +217,6 @@ const highlightedText = computed(() => {
   background: #fafafa;
   line-height: 1.5;
 }
-
 .instructions {
   margin-top: 20px;
   font-size: 14px;
