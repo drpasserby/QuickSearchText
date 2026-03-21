@@ -84,6 +84,18 @@ const highlightedText = computed(() => {
     return `<span style="background-color:${color};color:#fff;padding:0 2px;border-radius:2px;">${match}</span>`
   })
 })
+
+const keywordCounts = computed(() => {
+  const counts = {}
+  tags.value.forEach(tag => {
+    if (tag.value.trim()) {
+      const regex = new RegExp(tag.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi')
+      const matches = mainText.value.match(regex)
+      counts[tag.value] = matches ? matches.length : 0
+    }
+  })
+  return counts
+})
 </script>
 
 <style>
